@@ -9,7 +9,7 @@ import Swal from 'sweetalert2';
 export class StatusRecieverService {
 
   constructor() { }
-   statusReciever(statusResponse: string, body: string) {
+   statusReciever(statusResponse: string, body: any) {
     let timerInterval: NodeJS.Timer;
     Swal.fire({
       title: statusResponse,

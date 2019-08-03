@@ -1,3 +1,4 @@
+import { StatusRecieverService } from './../services/status-reciever.service';
 import { HeaderTitleService } from './../services/header-title.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -22,7 +23,8 @@ export class AddClientComponent implements OnInit {
   data: any = {};
   bounce: any;
 
-  constructor(private formBuilder: FormBuilder, private http: HttpClient,  private headerTitleService: HeaderTitleService) {
+  constructor(private statusRecieverService: StatusRecieverService,
+              private formBuilder: FormBuilder, private http: HttpClient,  private headerTitleService: HeaderTitleService) {
     this.getData();
     this.getScopes();
   }
@@ -48,38 +50,23 @@ export class AddClientComponent implements OnInit {
     console.log(this.registerForm.value);
     const body = JSON.stringify(this.registerForm.value);
     const headers = new HttpHeaders({ 'Content-Type': 'application/json'});
-    const resp = this.http.post(this.postUrl, body , {headers})
-    .subscribe((res: Response) => {
-      console.log('Response ' + res);
-      let statusResponse: string;
-      if (res.status === 201 || res.status === 200) {
+    let statusResponse = 'Created - Auto close alert!';
+    this.http.post(this.postUrl, body , {headers})
+    .subscribe(
+      (data) => {
+        console.log(data);
+        console.log('status ' + '201 ' + statusResponse);
+        this.statusRecieverService.statusReciever(statusResponse, body);
         this.registerForm.reset();
-        statusResponse = 'Created - Auto close alert!';
-       } else {statusResponse = 'Retry - Auto close alert!'; }
-      // Swal Start
-      let timerInterval: NodeJS.Timer;
-      Swal.fire({
-         title: statusResponse,
-         html: JSON.stringify(this.registerForm.value),
-         timer: 7000,
-         onBeforeOpen: () => {
-           Swal.showLoading();
-           timerInterval = setInterval(() => {
-           }, 200);
-         },
-         onClose: () => {
-           clearInterval(timerInterval);
-         }
-       }).then((result) => {
-         if (
-           // Read more about handling dismissals
-           result.dismiss === Swal.DismissReason.timer
-         ) {
-           console.log('I was closed by the timer');
-         }
-       });
-       // Swal Ends
-     });
+      },
+      (error: Response) => {
+        if (error.status === 200) {
+          statusResponse = 'Already Exising Value - Auto close alert!';
+          console.log('error ' + error.status + ' ' + statusResponse);
+        } else { statusResponse = 'Retry - Auto close alert!';
+                 console.log('error ' + error.status + ' ' + statusResponse); }
+        this.statusRecieverService.statusReciever(statusResponse, body);
+          });
     }
 
   getData() {
