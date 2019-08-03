@@ -3,18 +3,12 @@ import { HeaderTitleService } from './../services/header-title.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import Swal from 'sweetalert2';
-import { trigger, transition, useAnimation } from '@angular/animations';
-import { bounce } from 'ng-animate';
 
 
 @Component({
   selector: 'app-add-client',
   templateUrl: './add-client.component.html',
   styleUrls: ['./add-client.component.scss'],
-  animations: [
-    trigger('bounce', [transition('* => *', useAnimation(bounce))])
-  ]
 })
 export class AddClientComponent implements OnInit {
   registerForm: FormGroup;

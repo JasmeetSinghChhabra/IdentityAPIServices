@@ -14,7 +14,7 @@ export class StatusRecieverService {
     Swal.fire({
       title: statusResponse,
       html: body,
-      timer: 7000,
+      timer: 2500,
       onBeforeOpen: () => {
         Swal.showLoading();
         timerInterval = setInterval(() => {

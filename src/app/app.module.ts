@@ -15,6 +15,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NoSecialCharDirective } from './no-secial-char.directive';
 import { DeleteClientComponent } from './delete-client/delete-client.component';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { DeleteResourceComponent } from './delete-resource/delete-resource.component';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
     AddResourceComponent,
     NoSecialCharDirective,
     DeleteClientComponent,
+    DeleteResourceComponent,
   ],
   imports: [
     BrowserModule,
