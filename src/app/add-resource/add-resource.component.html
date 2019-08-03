@@ -1,0 +1,28 @@
+
+ <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+        <div class="add-client-container" >
+            
+            <mat-card-title>Clients represent applications that can request tokens from your identityserver.</mat-card-title>
+            <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+            
+            <mat-form-field appearance="outline" hideRequiredMarker>
+              <mat-label>Client Name</mat-label>
+              <input type="text" matInput placeholder="application.api" required  appNoSecialChar
+              formControlName="name" class="form-control" >
+              <mat-icon matSuffix>people_outline</mat-icon>
+            </mat-form-field>
+        
+        
+            <mat-form-field appearance="outline" hideRequiredMarker>
+              <mat-label>Description</mat-label>
+              <input matInput placeholder="AccuV Application API" required 
+              formControlName="description" class="form-control">
+              <mat-icon matSuffix>people_outline</mat-icon>
+            </mat-form-field>
+        
+            <button mat-button>Register</button>
+           
+          </div>
+  </form> 
+        

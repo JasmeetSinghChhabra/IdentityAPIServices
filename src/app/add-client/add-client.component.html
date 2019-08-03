@@ -1,0 +1,74 @@
+
+ <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+<div class="add-client-container" >
+    
+    <mat-card-title>Clients represent applications that can request tokens from your identityserver.</mat-card-title>
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    
+    <mat-form-field appearance="outline" hideRequiredMarker>
+      <mat-label>Client Name</mat-label>
+      <input type="text" matInput placeholder="Vendor Management API" required [@bounce]="bounce"
+      formControlName="clientName"  >
+      <mat-icon matSuffix>people_outline</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" hideRequiredMarker>
+      <mat-label>Client Id</mat-label>
+      <input type="text" matInput placeholder="vendormanagement_bkg_api : No Spaces Allowed" required appNoSecialChar 
+      formControlName="clientId" >  
+      <mat-icon matSuffix>people_outline</mat-icon>
+      <mat-error></mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" hideRequiredMarker>
+      <mat-label>Required Client Secret</mat-label>
+      <mat-select [(value)]="selected_requireClientSecret" name="selected_requireClientSecret"   
+      formControlName="requireClientSecret" >
+        <mat-option value="true">True</mat-option>
+        <mat-option value="false">False</mat-option>
+      </mat-select>
+    </mat-form-field>
+  
+
+    <mat-form-field appearance="outline" hideRequiredMarker>
+      <mat-label>Description</mat-label>
+      <input matInput placeholder="Accuv Vendor Management" required 
+      formControlName="description" >
+      <mat-icon matSuffix>people_outline</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" hideRequiredMarker>
+        <mat-label>Grant Types: Select an option</mat-label>
+        <mat-select [(value)]="selected_grant_type" name="selected_grant_type"   
+        formControlName="grantTypes" >
+          <mat-option *ngFor="let grant_type of data.grantTypes" [value]="grant_type">{{grant_type}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    
+      <mat-form-field formArrayName="secrets" appearance="outline" hideRequiredMarker>
+        <mat-label>Secrets</mat-label>
+        <input  multiple formControlName="0" matInput placeholder="String Required" required appNoSecialChar>
+        <mat-icon matSuffix>people_outline</mat-icon>
+      </mat-form-field>
+      <!-- formArrayName="allowedScopes"  -->
+      <mat-form-field appearance="outline" hideRequiredMarker>
+          <mat-label>Allowed Scopes : Select an option</mat-label>
+          <mat-select multiple [(value)]="selected_scope" formControlName="allowedScopes" name="selected_scope"  
+           >
+            <mat-option *ngFor="let standard_Scopes of data.standardScopes" [value]="standard_Scopes">{{standard_Scopes}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+    <!-- <mat-form-field appearance="outline">
+       <input matInput [matDatepicker]="picker" placeholder="Created Date" formControlName="createdDate">
+       <mat-datepicker-toggle matSuffix [for]="picker">
+          <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+       </mat-datepicker-toggle>
+       <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field> -->
+   
+    <button mat-button [@bounce]="bounce">Register</button>
+   
+  </div>
+</form> 
