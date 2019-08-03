@@ -3,16 +3,22 @@ import { Routes, RouterModule } from '@angular/router';
 import { AddClientComponent } from './add-client/add-client.component';
 import { AddResourceComponent } from './add-resource/add-resource.component';
 import { DeleteClientComponent } from './delete-client/delete-client.component';
+import { DeleteResourceComponent } from './delete-resource/delete-resource.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
+  { path: '',
+  component: HomeComponent },
   { path: 'home',
-  component: AddClientComponent },
+  component: HomeComponent },
   { path: 'addClient',
   component: AddClientComponent },
   { path: 'addResource',
   component: AddResourceComponent },
   { path: 'deleteClient',
-  component: DeleteClientComponent }
+  component: DeleteClientComponent },
+  { path: 'deleteResource',
+  component: DeleteResourceComponent }
 ];
 
 @NgModule({

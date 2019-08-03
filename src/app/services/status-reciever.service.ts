@@ -10,7 +10,7 @@ export class StatusRecieverService {
 
   constructor() { }
    statusReciever(statusResponse: string, body: any) {
-    let timerInterval: NodeJS.Timer;
+    let timerInterval;
     Swal.fire({
       title: statusResponse,
       html: body,

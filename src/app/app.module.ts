@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AddClientComponent } from './add-client/add-client.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatInputModule, MatSelectModule, MatMenuModule, MatCardModule, MatNativeDateModule, MatDatepickerModule, MatProgressSpinnerModule, MatProgressBarModule, MatFormFieldModule, MatButtonModule} from '@angular/material';
+import {MatInputModule, MatSelectModule, MatMenuModule, MatCardModule, MatNativeDateModule, MatDatepickerModule, MatProgressSpinnerModule, MatProgressBarModule, MatFormFieldModule, MatButtonModule, MatDivider, MatDividerModule} from '@angular/material';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { HeaderComponent } from './navigation/header/header.component';
 import {MatIconModule} from '@angular/material/icon';
@@ -16,6 +16,7 @@ import { NoSecialCharDirective } from './no-secial-char.directive';
 import { DeleteClientComponent } from './delete-client/delete-client.component';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { DeleteResourceComponent } from './delete-resource/delete-resource.component';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { DeleteResourceComponent } from './delete-resource/delete-resource.compo
     NoSecialCharDirective,
     DeleteClientComponent,
     DeleteResourceComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,7 +45,9 @@ import { DeleteResourceComponent } from './delete-resource/delete-resource.compo
     MatMenuModule,
     MatCardModule,
     MatFormFieldModule,
+    MatCardModule,
     MatNativeDateModule,
+    MatDividerModule,
     MatDatepickerModule,
     MatProgressBarModule,
     MatButtonModule,
