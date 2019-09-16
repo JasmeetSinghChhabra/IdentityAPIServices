@@ -3,12 +3,12 @@
 
 <div class="add-client-container" >
     
-    <mat-card-title>Clients represent applications that can request tokens from your identityserver.</mat-card-title>
+    <mat-card style="text-align: center;">Clients represent applications that can request tokens from your identityserver.</mat-card>
     <mat-progress-bar mode="indeterminate"></mat-progress-bar>
     
     <mat-form-field appearance="outline" hideRequiredMarker>
       <mat-label>Client Name</mat-label>
-      <input type="text" matInput placeholder="Vendor Management API" required
+      <input type="text" matInput placeholder="Vendor Management API" required 
       formControlName="clientName"  >
       <mat-icon matSuffix>people_outline</mat-icon>
     </mat-form-field>
@@ -29,6 +29,11 @@
         <mat-option value="false">False</mat-option>
       </mat-select>
     </mat-form-field>
+    <mat-form-field formArrayName="secrets" appearance="outline" hideRequiredMarker>
+      <mat-label>Secrets</mat-label>
+      <input  multiple formControlName="0" matInput placeholder="String Required" required appNoSecialChar>
+      <mat-icon matSuffix>people_outline</mat-icon>
+    </mat-form-field>
   
 
     <mat-form-field appearance="outline" hideRequiredMarker>
@@ -46,11 +51,7 @@
         </mat-select>
       </mat-form-field>
     
-      <mat-form-field formArrayName="secrets" appearance="outline" hideRequiredMarker>
-        <mat-label>Secrets</mat-label>
-        <input  multiple formControlName="0" matInput placeholder="String Required" required appNoSecialChar>
-        <mat-icon matSuffix>people_outline</mat-icon>
-      </mat-form-field>
+      
       <!-- formArrayName="allowedScopes"  -->
       <mat-form-field appearance="outline" hideRequiredMarker>
           <mat-label>Allowed Scopes : Select an option</mat-label>
@@ -74,3 +75,20 @@
    
   </div>
 </form> 
+<!-- <div [hidden]="!submitted">
+  <h2>You submitted the following:</h2>
+  <div class="row">
+    <div class="col-xs-3">Name</div>
+    <div class="col-xs-9">{{clientName}}</div>
+  </div>
+ <div class="row">
+    <div class="col-xs-3">Alter Ego</div>
+    <div class="col-xs-9">{{ model.alterEgo }}</div>
+  </div>
+  <div class="row">
+    <div class="col-xs-3">Power</div>
+    <div class="col-xs-9">{{ model.power }}</div>
+  </div>
+  <br>
+  <button class="btn btn-primary" (click)="submitted=false">Edit</button>
+</div> -->

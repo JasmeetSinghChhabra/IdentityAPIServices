@@ -1,0 +1,32 @@
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+  <div class="add-client-container" >
+      
+      <mat-card style="text-align: center;">Add Client Scope</mat-card>
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      
+     
+      <mat-form-field appearance="outline" hideRequiredMarker>
+        <mat-label>New Client Scope</mat-label>
+        <input type="text" matInput placeholder="openid" required 
+        formControlName="clientScopes"  >
+        <mat-icon matSuffix>people_outline</mat-icon>
+      </mat-form-field>
+      
+      
+        <mat-form-field appearance="outline" hideRequiredMarker>
+          <mat-label>Client Names: Select an option</mat-label>
+          <mat-select 
+          formControlName="clientNames" >
+            <mat-option *ngFor="let client_name of response" [value]="client_name.id">{{client_name.clientId}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+      
+     
+      <mat-divider></mat-divider>
+      <button mat-button>Register</button>
+      <mat-divider></mat-divider>
+     
+    </div>
+  </form> 

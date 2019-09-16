@@ -1,6 +1,6 @@
 import { StatusRecieverService } from './../services/status-reciever.service';
 import { HeaderTitleService } from './../services/header-title.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
@@ -15,7 +15,7 @@ export class AddClientComponent implements OnInit {
   private getUrl = 'http://localhost:5000/parameters';
   private postUrl = 'http://localhost:5000/api/client/';
   data: any = {};
-  bounce: any;
+  submitted = false;
 
   constructor(private statusRecieverService: StatusRecieverService,
               private formBuilder: FormBuilder, private http: HttpClient,  private headerTitleService: HeaderTitleService) {
@@ -41,8 +41,10 @@ export class AddClientComponent implements OnInit {
   }
 
   onSubmit() {
+    this.submitted = true;
     console.log(this.registerForm.value);
     const body = JSON.stringify(this.registerForm.value);
+    const view = JSON.stringify(this.registerForm.value, null, '\t');
     const headers = new HttpHeaders({ 'Content-Type': 'application/json'});
     let statusResponse = 'Created - Auto close alert!';
     this.http.post(this.postUrl, body , {headers})
@@ -50,16 +52,16 @@ export class AddClientComponent implements OnInit {
       (data) => {
         console.log(data);
         console.log('status ' + '201 ' + statusResponse);
-        this.statusRecieverService.statusReciever(statusResponse, body);
-        this.registerForm.reset();
+        this.statusRecieverService.statusReciever(statusResponse, view);
+        // this.registerForm.reset();
       },
       (error: Response) => {
         if (error.status === 200) {
-          statusResponse = 'Already Exising Value - Auto close alert!';
+          statusResponse = 'Already Exising Value!';
           console.log('error ' + error.status + ' ' + statusResponse);
-        } else { statusResponse = 'Retry - Auto close alert!';
+        } else { statusResponse = 'Retry! Fields Not Filled';
                  console.log('error ' + error.status + ' ' + statusResponse); }
-        this.statusRecieverService.statusReciever(statusResponse, body);
+        this.statusRecieverService.statusReciever(statusResponse, view);
           });
     }
 

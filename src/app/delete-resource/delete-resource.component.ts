@@ -37,13 +37,13 @@ import { HeaderTitleService } from '../services/header-title.service';
           console.log(data);
           console.log('status ' + '201 ' + statusResponse);
           this.statusRecieverService.statusReciever(statusResponse, id);
-          this.registerForm.reset();
+          // this.registerForm.reset();
         },
         (error: Response) => {
           if (error.status === 200) {
-            statusResponse = 'Already Exising Value - Auto close alert!';
+            statusResponse = 'Already Exising Value!';
             console.log('error ' + error.status + ' ' + statusResponse);
-          } else { statusResponse = 'Retry - Value Does not exist - Auto close alert!';
+          } else { statusResponse = 'Retry - Value Does not exist!';
                    console.log('error ' + error.status + ' ' + statusResponse); }
           this.statusRecieverService.statusReciever(statusResponse, id);
             });

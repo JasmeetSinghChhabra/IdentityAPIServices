@@ -3,11 +3,11 @@
 
         <div class="add-client-container" >
             
-            <mat-card-title>Clients represent applications that can request tokens from your identityserver.</mat-card-title>
+            <mat-card style="text-align: center;">Api Resources represents microservices among which communication happens so that Clients can request tokens from identityserver.</mat-card>
             <mat-progress-bar mode="indeterminate"></mat-progress-bar>
             
             <mat-form-field appearance="outline" hideRequiredMarker>
-              <mat-label>Client Name</mat-label>
+              <mat-label>Resource Name</mat-label>
               <input type="text" matInput placeholder="application.api" required  appNoSecialChar
               formControlName="name" class="form-control" >
               <mat-icon matSuffix>people_outline</mat-icon>
@@ -15,7 +15,7 @@
         
         
             <mat-form-field appearance="outline" hideRequiredMarker>
-              <mat-label>Description</mat-label>
+              <mat-label>Resource Description</mat-label>
               <input matInput placeholder="AccuV Application API" required 
               formControlName="description" class="form-control">
               <mat-icon matSuffix>people_outline</mat-icon>

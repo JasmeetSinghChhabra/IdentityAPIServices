@@ -17,6 +17,8 @@ import { DeleteClientComponent } from './delete-client/delete-client.component';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { DeleteResourceComponent } from './delete-resource/delete-resource.component';
 import { HomeComponent } from './home/home.component';
+import { AddClientScopesComponent } from './add-client-scopes/add-client-scopes.component';
+import { AddClientRedirectUrisComponent } from './add-client-redirect-uris/add-client-redirect-uris.component';
 
 
 @NgModule({
@@ -29,6 +31,8 @@ import { HomeComponent } from './home/home.component';
     DeleteClientComponent,
     DeleteResourceComponent,
     HomeComponent,
+    AddClientScopesComponent,
+    AddClientRedirectUrisComponent,
   ],
   imports: [
     BrowserModule,

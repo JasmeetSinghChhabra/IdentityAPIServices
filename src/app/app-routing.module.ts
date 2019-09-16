@@ -1,9 +1,12 @@
+
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AddClientComponent } from './add-client/add-client.component';
 import { AddResourceComponent } from './add-resource/add-resource.component';
 import { DeleteClientComponent } from './delete-client/delete-client.component';
 import { DeleteResourceComponent } from './delete-resource/delete-resource.component';
+import { AddClientScopesComponent } from './add-client-scopes/add-client-scopes.component';
+import { AddClientRedirectUrisComponent } from './add-client-redirect-uris/add-client-redirect-uris.component';
 import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
@@ -18,7 +21,11 @@ const routes: Routes = [
   { path: 'deleteClient',
   component: DeleteClientComponent },
   { path: 'deleteResource',
-  component: DeleteResourceComponent }
+  component: DeleteResourceComponent },
+  { path: 'addClientScopes',
+  component: AddClientScopesComponent },
+  { path: 'addClientRedirectUris',
+  component: AddClientRedirectUrisComponent }
 ];
 
 @NgModule({

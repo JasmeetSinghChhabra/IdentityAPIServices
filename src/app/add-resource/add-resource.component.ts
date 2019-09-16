@@ -23,7 +23,7 @@ export class AddResourceComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.headerTitleService.setTitle('Identity Api : Creating API Response');
+    this.headerTitleService.setTitle('Identity Api : Creating API Resource');
     this.registerForm = this.formBuilder.group({
       name: ['', Validators.required],
       description: ['', Validators.required]
@@ -31,23 +31,24 @@ export class AddResourceComponent implements OnInit {
   }
   onSubmit() {
     const body = JSON.stringify(this.registerForm.value);
+    const view = JSON.stringify(this.registerForm.value, null, '\t');
     const headers = new HttpHeaders({ 'Content-Type': 'application/json'});
-    let statusResponse = 'Created - Auto close alert!';
+    let statusResponse = 'Created!';
     this.http.post(this.postUrl, body , {headers})
     .subscribe(
       (data) => {
         console.log(data);
         console.log('status ' + '201 ' + statusResponse);
-        this.statusRecieverService.statusReciever(statusResponse, body);
-        this.registerForm.reset();
+        this.statusRecieverService.statusReciever(statusResponse, view);
+        // this.registerForm.reset();
       },
       (error: Response) => {
         if (error.status === 200) {
-          statusResponse = 'Already Exising Value - Auto close alert!';
+          statusResponse = 'Already Exising Value!';
           console.log('error ' + error.status + ' ' + statusResponse);
-        } else { statusResponse = 'Retry - Auto close alert!';
+        } else { statusResponse = 'Retry! Fields Not Filled';
                  console.log('error ' + error.status + ' ' + statusResponse); }
-        this.statusRecieverService.statusReciever(statusResponse, body);
+        this.statusRecieverService.statusReciever(statusResponse, view);
           });
   }
 }
