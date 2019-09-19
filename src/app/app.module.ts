@@ -1,12 +1,23 @@
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AuthCallbackComponent } from './auth-callback/auth-callback.component';
+
+
+/* Module Imports */
+import { CoreModule } from './core/core.module';
+import { HomeModule } from './home/home.module';
+import { AccountModule } from './account/account.module';
+import { ShellModule } from './shell/shell.module';
+
 import { AddClientComponent } from './add-client/add-client.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatInputModule, MatSelectModule, MatMenuModule, MatCardModule, MatNativeDateModule, MatDatepickerModule, MatProgressSpinnerModule, MatProgressBarModule, MatFormFieldModule, MatButtonModule, MatDivider, MatDividerModule} from '@angular/material';
+import {MatInputModule, MatSelectModule, MatMenuModule,
+  MatCardModule, MatNativeDateModule, MatDatepickerModule,
+  MatProgressSpinnerModule, MatProgressBarModule, MatFormFieldModule,
+  MatButtonModule, MatDivider, MatDividerModule} from '@angular/material';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { HeaderComponent } from './navigation/header/header.component';
 import {MatIconModule} from '@angular/material/icon';
@@ -24,6 +35,7 @@ import { AddClientRedirectUrisComponent } from './add-client-redirect-uris/add-c
 @NgModule({
   declarations: [
     AppComponent,
+    AuthCallbackComponent,
     AddClientComponent,
     HeaderComponent,
     AddResourceComponent,
@@ -37,7 +49,6 @@ import { AddClientRedirectUrisComponent } from './add-client-redirect-uris/add-c
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    AppRoutingModule,
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
@@ -56,7 +67,12 @@ import { AddClientRedirectUrisComponent } from './add-client-redirect-uris/add-c
     MatProgressBarModule,
     MatButtonModule,
     SweetAlert2Module.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    CoreModule,
+    HomeModule,
+    AccountModule,
+    AppRoutingModule,
+    ShellModule
   ],
   providers: [ MatDatepickerModule],
   bootstrap: [AppComponent],
