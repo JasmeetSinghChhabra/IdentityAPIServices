@@ -35,4 +35,10 @@
     </mat-menu>
   </span>
   <span class="fill-remaining-space"> {{title}} </span>
+  <nav *ngIf="!isAuthenticated" class="my-2 my-md-0 mr-md-3">
+    <a class="p-2 text-light" routerLink="/login">Login</a>     
+ </nav>
+ <nav *ngIf="isAuthenticated" class="my-2 my-md-0 mr-md-3">
+    <a class="p-2 text-light" (click)="signout()" href="#">Signout {{name}}</a>             
+ </nav>
 </mat-toolbar>

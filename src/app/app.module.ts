@@ -10,8 +10,6 @@ import { AuthCallbackComponent } from './auth-callback/auth-callback.component';
 import { CoreModule } from './core/core.module';
 import { HomeModule } from './home/home.module';
 import { AccountModule } from './account/account.module';
-import { ShellModule } from './shell/shell.module';
-
 import { AddClientComponent } from './add-client/add-client.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatInputModule, MatSelectModule, MatMenuModule,
@@ -71,8 +69,7 @@ import { AddClientRedirectUrisComponent } from './add-client-redirect-uris/add-c
     CoreModule,
     HomeModule,
     AccountModule,
-    AppRoutingModule,
-    ShellModule
+    AppRoutingModule
   ],
   providers: [ MatDatepickerModule],
   bootstrap: [AppComponent],
