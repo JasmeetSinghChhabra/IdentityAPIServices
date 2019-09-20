@@ -1,3 +1,4 @@
+import { LoginComponent } from './account/login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -8,8 +9,6 @@ import { AuthCallbackComponent } from './auth-callback/auth-callback.component';
 
 /* Module Imports */
 import { CoreModule } from './core/core.module';
-import { HomeModule } from './home/home.module';
-import { AccountModule } from './account/account.module';
 import { AddClientComponent } from './add-client/add-client.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatInputModule, MatSelectModule, MatMenuModule,
@@ -28,10 +27,11 @@ import { DeleteResourceComponent } from './delete-resource/delete-resource.compo
 import { HomeComponent } from './home/home.component';
 import { AddClientScopesComponent } from './add-client-scopes/add-client-scopes.component';
 import { AddClientRedirectUrisComponent } from './add-client-redirect-uris/add-client-redirect-uris.component';
-
+import { RedirectComponent } from './redirect/redirect.component';
 
 @NgModule({
   declarations: [
+    LoginComponent,
     AppComponent,
     AuthCallbackComponent,
     AddClientComponent,
@@ -43,6 +43,7 @@ import { AddClientRedirectUrisComponent } from './add-client-redirect-uris/add-c
     HomeComponent,
     AddClientScopesComponent,
     AddClientRedirectUrisComponent,
+    RedirectComponent
   ],
   imports: [
     BrowserModule,
@@ -67,8 +68,6 @@ import { AddClientRedirectUrisComponent } from './add-client-redirect-uris/add-c
     SweetAlert2Module.forRoot(),
     BrowserAnimationsModule,
     CoreModule,
-    HomeModule,
-    AccountModule,
     AppRoutingModule
   ],
   providers: [ MatDatepickerModule],

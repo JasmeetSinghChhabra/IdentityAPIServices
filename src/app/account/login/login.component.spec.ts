@@ -1,10 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { FormsModule }   from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { LoginComponent } from './login.component';
-import { NgxSpinnerModule } from 'ngx-spinner'; 
-import { ConfigService } from '../../shared/config.service';
 
 describe('LoginComponent', () => {
   let el: HTMLElement;
@@ -13,9 +11,9 @@ describe('LoginComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      providers: [ConfigService],
-      imports: [FormsModule, HttpClientTestingModule, NgxSpinnerModule],
-      declarations: [LoginComponent]         
+      providers: [],
+      imports: [FormsModule, HttpClientTestingModule],
+      declarations: [LoginComponent]
     })
     .compileComponents();
   }));

@@ -49,7 +49,7 @@ export class AuthService  {
   }
 
   signout() {
-    this.manager.signoutRedirect();
+     this.manager.signoutRedirect();
   }
 }
 

@@ -1,30 +1,35 @@
-<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+ <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
 
-          <div class="add-client-container" >
+          <div class="add-client-container">
               
-              <mat-card style="text-align: center;">Add Client Redirect Uris Component</mat-card>
+             <mat-card style="text-align: center;">Add Client Redirect Uris Component</mat-card>
               <mat-progress-bar mode="indeterminate"></mat-progress-bar>
-              
              
               <mat-form-field appearance="outline" hideRequiredMarker>
-                <mat-label>Redirect URIs</mat-label>
-                <input type="text" matInput placeholder="http://localhost:3000/callback.html" required 
-                formControlName="redirectUris"  >
-                <mat-icon matSuffix>people_outline</mat-icon>
+                <mat-label>Client Names: Select an option</mat-label>
+                <mat-select 
+                formControlName="clientId" >
+                  <mat-option *ngFor="let client_name of response" [value]="client_name.id">{{client_name.clientId}}</mat-option>
+                </mat-select>
               </mat-form-field>
-              
-              <mat-form-field appearance="outline" hideRequiredMarker>
-                  <mat-label>Client Names: Select an option</mat-label>
-                  <mat-select 
-                  formControlName="clientNames" >
-                    <mat-option *ngFor="let client_name of response" [value]="client_name.id">{{client_name.clientId}}</mat-option>
-                  </mat-select>
-                </mat-form-field>
-              
-             
+           
+              <div  *ngFor="let redirectUri of getRedirectUrisFormControls(); let i = index">
+                <mat-form-field appearance="outline" hideRequiredMarker>
+                <mat-label>Redirect URI {{i}}</mat-label>
+                <input type="text" matInput placeholder="http://localhost:3000/callback.html" required [formControl]="redirectUri">
+                <mat-icon matSuffix>people_outline</mat-icon>
+              </mat-form-field> 
+              <button  mat-button (click)="remove(i)">Remove Redirect URI: {{i}}</button>  
+              </div>             
               <mat-divider></mat-divider>
-              <button mat-button>Register</button>
+              <br>
+              <button mat-button (click)="add()">Add Redirect URI</button>
               <mat-divider></mat-divider>
-             
+              <mat-divider></mat-divider>
+              <mat-divider ></mat-divider><br><br>
+              <button mat-button type="reset" (click)="onReset()">Reset Form</button>
+              <button mat-button (click)="onSubmit(true)">Register</button>
+           
             </div>
-          </form> 
+          </form>  
+

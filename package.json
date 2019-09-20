@@ -25,6 +25,7 @@
     "ng-animate": "^0.3.4",
     "ngx-spinner": "^8.0.3",
     "oidc-client": "^1.9.1",
+    "please-wait": "0.0.5",
     "rxjs": "~6.5.3",
     "sweetalert2": "^8.17.6",
     "tslib": "^1.9.0",

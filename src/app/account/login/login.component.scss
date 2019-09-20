@@ -1,0 +1,10 @@
+.add-client-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .add-client-container > * {
+    margin:auto; 
+    width: 30%;
+  }
+  
